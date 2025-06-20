@@ -17,7 +17,7 @@ def main_menu():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        if st.button("📊 Simulateur de TCO"):
+        if st.button("📊 Comparateur de TCO"):
             st.session_state.page = "tco"
     with col2:
         if st.button("🌱 Calculateur de carbone"):
@@ -30,7 +30,9 @@ def main_menu():
 # MODULE 1 : TCO
 # ======================
 def simulateur_tco():
-    st.markdown("### 📊 Simulateur de TCO")
+    st.markdown("### 📊 Comparateur de TCO")
+    st.markdown("Comparez le coût total de possession de deux véhicules sur toute leur durée d’usage.")
+    st.markdown("Un outil simple pour anticiper les dépenses, faire le bon choix et optimiser votre budget flotte.")
     col1, col2 = st.columns(2)
     veh_data = []
 
@@ -52,7 +54,7 @@ def simulateur_tco():
         veh["couts_fixes"] = col.number_input("Coûts fixes annuels (€)", value=1000, key=f"fixes{i}")
         veh_data.append(veh)
 
-    if st.button("Calculer TCO"):
+    if st.button("Calculer"):
         col1, col2 = st.columns(2)
         for i, (col, veh) in enumerate(zip([col1, col2], veh_data), 1):
             duree = veh["duree"]
